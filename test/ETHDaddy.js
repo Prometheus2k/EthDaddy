@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const ethers = require("ethers");
+const { ethers } = require("hardhat");
 
 const tokens = (n) => {
   return ethers.utils.parseUnits(n.toString(), "ether");
@@ -7,16 +7,20 @@ const tokens = (n) => {
 
 describe("ETHDaddy", () => {
   let ethDaddy;
-  const NAME = "ETHDaddy";
+  let deployer, owner1;
+
+  const NAME = "ETH Daddy";
   const SYMBOL = "ETHD";
 
   beforeEach(async () => {
+    [deployer, owner1] = await ethers.getSigners();
+
     const ETHDaddy = await ethers.getContractFactory("ETHDaddy");
-    ethDaddy = await ETHDaddy.deploy(NAME, SYMBOL);
+    ethDaddy = await ETHDaddy.deploy("ETH Daddy", "ETHD");
   });
 
   describe("Deployment", () => {
-    it("Sets the name", async () => {
+    it("has a name", async () => {
       const result = await ethDaddy.name();
       expect(result).to.equal(NAME);
     });
@@ -24,6 +28,11 @@ describe("ETHDaddy", () => {
     it("has a symbol", async () => {
       const result = await ethDaddy.symbol();
       expect(result).to.equal(SYMBOL);
+    });
+
+    it("Sets the owner", async () => {
+      const result = await ethDaddy.owner();
+      expect(result).to.equal(deployer.address);
     });
   });
 });
