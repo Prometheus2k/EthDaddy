@@ -1,8 +1,8 @@
 const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const hre = require("hardhat");
 
 const tokens = (n) => {
-  return ethers.utils.parseUnits(n.toString(), "ether");
+  return hre.ethers.utils.parseUnits(n.toString(), "ether");
 };
 
 describe("ETHDaddy", () => {
@@ -14,10 +14,10 @@ describe("ETHDaddy", () => {
 
   beforeEach(async () => {
     //setup accounts
-    [deployer, owner1] = await ethers.getSigners();
+    [deployer, owner1] = await hre.ethers.getSigners();
 
     //deploy contract
-    const ETHDaddy = await ethers.getContractFactory("ETHDaddy");
+    const ETHDaddy = await hre.ethers.getContractFactory("ETHDaddy");
     ethDaddy = await ETHDaddy.deploy("ETH Daddy", "ETHD");
 
     //list a domain
@@ -65,7 +65,7 @@ describe("ETHDaddy", () => {
 
   describe("Minting", () => {
     const ID = 1;
-    const AMOUNT = ethers.utils.parseUnits("10", "ether");
+    const AMOUNT = hre.ethers.utils.parseUnits("10", "ether");
 
     beforeEach(async () => {
       const transaction = await ethDaddy
@@ -91,11 +91,11 @@ describe("ETHDaddy", () => {
 
   describe("Withdrawing", () => {
     const ID = 1;
-    const AMOUNT = ethers.utils.parseUnits("10", "ether");
+    const AMOUNT = hre.ethers.utils.parseUnits("10", "ether");
     let balanceBefore;
 
     beforeEach(async () => {
-      balanceBefore = await ethers.provider.getBalance(deployer.address);
+      balanceBefore = await hre.ethers.provider.getBalance(deployer.address);
 
       let transaction = await ethDaddy.connect(owner1).mint(ID, {
         value: AMOUNT,
@@ -108,7 +108,9 @@ describe("ETHDaddy", () => {
     });
 
     it("Updates the owner balance", async () => {
-      const balanceAfter = await ethers.provider.getBalance(deployer.address);
+      const balanceAfter = await hre.ethers.provider.getBalance(
+        deployer.address,
+      );
       expect(balanceAfter).to.be.greaterThan(balanceBefore);
     });
 
