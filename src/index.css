@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700&family=Signika:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700&family=Signika:wght@300;400;500&display=swap");
 
 * {
   margin: 0;
@@ -7,7 +7,7 @@
 }
 
 :root {
-  --clr-white: #FFFFFF;
+  --clr-white: #ffffff;
   --clr-black: #202020;
   --clr-grey: #c4c4c4;
   --clr-grey-2: #8f8f8f;
@@ -48,7 +48,7 @@ nav {
   color: var(--clr-black);
 
   font-family: "Signika";
-  font-size: 1.50em;
+  font-size: 1.5em;
   font-weight: 700;
   letter-spacing: -1px;
 }
@@ -86,7 +86,7 @@ nav {
   border: none;
 
   font-family: "Open Sans";
-  font-size: 1.10em;
+  font-size: 1.1em;
   font-weight: 600;
 
   cursor: pointer;
@@ -238,7 +238,7 @@ header {
 }
 
 .card__info p small {
-  font-size: clamp(0.80rem, 2vw, 0.90rem);
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .card__info p small span {
@@ -247,7 +247,7 @@ header {
 
 .card__info p strong {
   font-family: "Merriweather";
-  font-size: clamp(1.25rem, 3vw, 1.80rem);
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
   font-weight: 700;
   margin: 0;
 }
