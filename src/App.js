@@ -24,7 +24,6 @@ function App() {
     setProvider(provider);
 
     const network = await provider.getNetwork();
-    console.log(network);
 
     const ethDaddy = new ethers.Contract(
       config[network.chainId].ETHDaddy.address,
@@ -41,7 +40,6 @@ function App() {
       const domain = await ethDaddy.getDomain(i);
       domains.push(domain);
     }
-    console.log(domains);
     setDomains(domains);
 
     window.ethereum.on("accountsChanged", async () => {
