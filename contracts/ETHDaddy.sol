@@ -43,6 +43,9 @@ contract ETHDaddy is ERC721 {
         totalSupply++;
 
         _safeMint(msg.sender, _id);
+
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success);
     }
 
     function getDomain(uint256 _id) public view returns (Domain memory) {
@@ -53,8 +56,8 @@ contract ETHDaddy is ERC721 {
         return address(this).balance;
     }
 
-    function withdraw() public onlyOwner {
-        (bool success, ) = owner.call{value: address(this).balance}("");
-        require(success);
-    }
+    // function withdraw() public onlyOwner {
+    //     (bool success, ) = owner.call{value: address(this).balance}("");
+    //     require(success);
+    // }
 }

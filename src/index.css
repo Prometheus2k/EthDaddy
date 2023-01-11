@@ -57,6 +57,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 20px;
 
   list-style: none;
 }
@@ -107,6 +108,7 @@ header {
   background-repeat: no-repeat;
   background-color: var(--clr-grey);
   min-height: 50vh;
+  align-items: center;
 
   position: relative;
 }
@@ -119,7 +121,7 @@ header {
 
 .header__subtitle {
   margin: 0 0 25px 75px;
-  padding-top: 100px;
+  padding-top: 50px;
 
   font-family: "Open Sans";
   font-size: 1em;

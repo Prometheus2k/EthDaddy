@@ -35,17 +35,15 @@ async function main() {
   ];
   const costs = [
     tokens(10),
-    tokens(20),
-    tokens(30),
-    tokens(40),
-    tokens(50),
-    tokens(60),
+    tokens(25),
+    tokens(15),
+    tokens(2.5),
+    tokens(3),
+    tokens(1),
   ];
 
   for (let i = 0; i < names.length; i++) {
-    const transaction = await ethDaddy
-      .connect(deployer)
-      .list(names[i], costs[i]);
+    let transaction = await ethDaddy.connect(deployer).list(names[i], costs[i]);
     await transaction.wait();
 
     console.log(`Listed domains ${i + 1}: ${names[i]}`);
